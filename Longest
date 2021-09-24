@@ -1,0 +1,28 @@
+// https://practice.geeksforgeeks.org/problems/longest-consecutive-subsequence2449/1/?category[]=Hash&category[]=Hash&difficulty[]=1&page=1&query=category[]Hashdifficulty[]1page1category[]Hash#
+
+class Solution{
+  public:
+    // arr[] : the input array
+    // N : size of the array arr[]
+    
+    //Function to return length of longest subsequence of consecutive integers.
+    int findLongestConseqSubseq(int arr[], int N)
+    {
+      //Your code here
+        int c=0,maxx=0;
+        sort(arr,arr+N);
+        
+        for(int i=1;i<N;i++)
+        {
+            if(arr[i]-arr[i-1]==1)
+            {
+                c++;
+                maxx=max(c,maxx);
+            }
+            else if(arr[i]-arr[i-1]==0)
+                continue;
+            else
+                c=0;
+        }
+        return maxx+1;
+    }
