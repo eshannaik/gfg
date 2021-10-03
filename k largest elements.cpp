@@ -19,3 +19,29 @@ public:
 	}
 
 };
+
+class Solution
+{
+    public:
+    //Function to return k largest elements from an array.
+    vector<int> kLargest(int arr[], int n, int k)
+    {
+        // code here
+        vector <int> v(k,0);
+        priority_queue <int,vector<int>,greater<int>> q;
+        
+        for(int i=0;i<n;i++)
+        {
+            q.push(arr[i]);
+            if(q.size()>k)
+                q.pop();
+        }
+        
+        for(int i=k-1;i>=0;i--)
+        {
+            v[i] = q.top();
+            q.pop();
+        }
+        return v;
+    }
+};
